@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright 2018 herrlich10@gmail.com
+# Copyright (c) 2018 herrlich10
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy 
 # of this software and associated documentation files (the "Software"), to deal 
@@ -25,6 +25,10 @@ from __future__ import print_function, division, absolute_import, unicode_litera
 import sys, shlex, time
 import subprocess, multiprocessing, ctypes
 import numpy as np
+
+__author__ = 'herrlich10 <herrlich10@gmail.com>'
+__version__ = '0.1.3'
+
 if sys.version_info[0] == 3:
     string_types = (str,)
 else:

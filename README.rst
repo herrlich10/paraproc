@@ -1,5 +1,11 @@
-# Overview
+.. image:: https://img.shields.io/pypi/v/paraproc.svg
+   :target: https://pypi.python.org/pypi/paraproc
 
+.. image:: https://img.shields.io/badge/license-MIT-green.svg
+   :target: https://github.com/herrlich10/paraproc/blob/master/LICENSE.txt
+
+Overview
+========
 Paraproc is a simple library that helps you easily parallelize your computation
 (over independent chunks of data) across multiple processes in Python, especially 
 when you want to mix callings to external command line programs and hand brew 
@@ -14,20 +20,21 @@ It is contained in only one Python file, so it can be easily copied into your pr
 (The copyright and license notice must be retained.)
 
 Code snippets that demonstrate the basic usage of the library can be found later
-in this documentation, and in the *_demo.py files.
-
-Online documentation is TODO.
+in this documentation, and in the demo_*.py files.
 
 Bugs can be reported to https://github.com/herrlich10/paraproc. 
 The code can also be found there.
 
-# Quick start
-
-## Execute commands in parallel
-
+Quick starts
+============
+Execute commands in parallel
+----------------------------
 You can run both Python codes and command line programs in parallel:
 
-    import os, paraproc
+.. code:: python
+
+    import os
+    import paraproc
     def my_job():
         print(os.getpid())
 
@@ -38,13 +45,15 @@ You can run both Python codes and command line programs in parallel:
         pc.check_call('echo $$', shell=True) # For linux/mac
     pc.wait()
 
-The pc.check_call() method will return immediatedly. The actual execution of 
-the queued commands are delayed until you call pc.wait().
+The ``pc.check_call()`` method will return immediatedly. The actual execution of 
+the queued commands are delayed until you call ``pc.wait()``.
 
-## Use shared-memory
-
+Use shared-memory
+-----------------
 You can load large data in shared-memory, and read or write them 
 as a normal numpy array from multiple processes:
+
+.. code:: python
 
     import numpy as np
     import paraproc
@@ -61,5 +70,5 @@ as a normal numpy array from multiple processes:
         pc.check_call(slow_operation, k, a)
     pc.wait()
 
-The data in a is shared in memory across all children processes and 
+The data in ``a`` is shared in memory across all children processes and 
 never copied even with write accesses.
